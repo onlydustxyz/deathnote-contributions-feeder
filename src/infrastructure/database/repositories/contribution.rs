@@ -1,5 +1,7 @@
-use super::{models, schema::contributions, Client};
-use crate::{domain::*, infrastructure::database::schema};
+use crate::{
+	domain::*,
+	infrastructure::database::{models, schema, schema::contributions, Client},
+};
 use diesel::prelude::*;
 
 impl ContributionRepository for Client {

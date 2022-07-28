@@ -1,4 +1,5 @@
 mod action_queue;
+mod application;
 mod routes;
 
 use diesel_migrations::*;
@@ -98,6 +99,7 @@ async fn main() {
 				routes::assign_contributor,
 				routes::validate_contribution,
 				routes::unassign_contributor,
+				routes::apply_to_contribution,
 			],
 		)
 		.mount("/swagger", make_swagger_ui(&routes::get_docs()))

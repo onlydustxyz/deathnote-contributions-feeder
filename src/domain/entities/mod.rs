@@ -9,3 +9,6 @@ pub use project::{Id as ProjectId, Project};
 
 mod contributor;
 pub use contributor::{Contributor, Id as ContributorId};
+
+mod application;
+pub use application::*;
