@@ -57,6 +57,19 @@ env_logger = "0.9.0"
 log = "0.4.17"
 itertools = "0.10.3"
 mapinto = "0.2.1"
+thiserror = "1.0.31"
+
+# web client
+tonic = "0.7.2"
+prost = "0.10.4"
+prost-types = "0.10.1"
+reqwest = "0.11.11"
+
+# Unit tests
+mockall = "0.11.2"
 
 [dev-dependencies]
 serde_test = "1.0.140"
+
+[build-dependencies]
+tonic-build = "0.7.2"

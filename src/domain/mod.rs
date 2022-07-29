@@ -24,3 +24,8 @@ pub use types::{
 };
 
 pub use actions::*;
+
+mod blockchain;
+pub use blockchain::{
+	EventFilter as BlockchainEventFilter, Network as BlockchainNetwork, StarknetChain,
+};

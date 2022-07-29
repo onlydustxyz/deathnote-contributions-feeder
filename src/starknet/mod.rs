@@ -14,8 +14,9 @@ mod contracts;
 use contracts::{ContributionContract, ProfileContract, RegistryContract};
 
 mod model;
-
 pub use model::*;
+
+mod indexing;
 
 pub fn make_account_from_env() -> impl Account {
 	let private_key = env::var("PRIVATE_KEY").expect("PRIVATE_KEY must be set");
