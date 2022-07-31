@@ -1,5 +1,5 @@
 use octocrab::models::Repository;
-use std::{env, ops::Deref, time::Duration};
+use std::{env, time::Duration};
 
 use super::Cache;
 
@@ -21,10 +21,8 @@ impl Default for RepoCache {
 	}
 }
 
-impl Deref for RepoCache {
-	type Target = Cache<String, Repository>;
-
-	fn deref(&self) -> &Self::Target {
+impl RepoCache {
+	pub fn inner_ref(&self) -> &Cache<String, Repository> {
 		&self.0
 	}
 }

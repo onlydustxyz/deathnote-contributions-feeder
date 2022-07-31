@@ -31,6 +31,11 @@ diesel = { version = "1.4.8", default-features = false, features = [
 	"serde_json",
 	"uuidv07",
 ] }
+uuid = { version = "0.8.2", default_features = false, features = [
+	"v4",
+	"serde",
+] }
+
 
 # Github
 octocrab = "0.16.0"
@@ -43,25 +48,28 @@ rocket_okapi = { version = "0.8.0-rc.2", features = ["swagger"] }
 okapi = { version = "0.7.0-rc.1" }
 rocket = { version = "0.5.0-rc.2", features = ["json"] }
 http-api-problem = { version = "0.53.0", features = ["json-schema"] }
-schemars = "0.8"
+schemars = { version = "0.8", features = ["uuid08", "bigdecimal"] }
 
 # Starknet
 starknet = { git = "https://github.com/ofux/starknet-rs" }
 crypto-bigint = { version = "0.4.8", features = ["serde"] }
 
-# Utils
-serde = { version = "1.0.137", features = ["derive"] }
-serde_json = "1.0.81"
-anyhow = "1.0.57"
-dotenv = "0.15.0"
+# Logs
 env_logger = "0.9.0"
 log = "0.4.17"
+
+# Errors
+anyhow = "1.0.57"
+thiserror = "1.0.31"
+
+# Serde
+serde = { version = "1.0.137", features = ["derive"] }
+serde_json = "1.0.81"
+
+# Utils
+dotenv = "0.15.0"
 itertools = "0.10.3"
 mapinto = "0.2.1"
-uuid = { version = "0.8.2", default-features = false, features = [
-	"v4",
-	"serde",
-] }
 
 [dev-dependencies]
 serde_test = "1.0.140"

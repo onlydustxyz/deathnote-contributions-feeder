@@ -1,16 +1,16 @@
 mod connection;
 pub use connection::{init_pool, DbConn as Connection, Pool as ConnectionPool};
 
-mod contribution_repository;
 mod models;
-mod project_repository;
+mod repositories;
 mod schema;
 
 use diesel::PgConnection;
 
 pub fn run_migrations(pool: &ConnectionPool) {
 	let connection = Connection::from_pool(pool);
-	diesel_migrations::run_pending_migrations(&*connection).expect("diesel migration failure");
+	diesel_migrations::run_pending_migrations(connection.as_pgconn_ref())
+		.expect("diesel migration failure");
 }
 
 fn database_url() -> String {
@@ -27,6 +27,6 @@ impl Client {
 	}
 
 	fn connection(&self) -> &PgConnection {
-		&self.connection
+		self.connection.as_pgconn_ref()
 	}
 }

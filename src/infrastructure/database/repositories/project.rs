@@ -1,11 +1,13 @@
 use std::str::FromStr;
 
-use super::{
-	models,
-	schema::projects::{self, dsl::*},
-	Client,
+use crate::{
+	domain::*,
+	infrastructure::database::{
+		models,
+		schema::projects::{self, dsl::*},
+		Client,
+	},
 };
-use crate::domain::*;
 use diesel::{prelude::*, query_dsl::BelongingToDsl};
 use itertools::Itertools;
 use starknet::core::types::FieldElement;

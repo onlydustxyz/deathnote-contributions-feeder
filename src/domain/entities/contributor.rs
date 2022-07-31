@@ -1,5 +1,6 @@
+use std::fmt::Display;
+
 use serde::{Deserialize, Serialize};
-use std::ops::Deref;
 
 use crypto_bigint::U256;
 
@@ -13,16 +14,20 @@ pub struct Contributor {
 	pub github_handle: Option<String>,
 }
 
-impl Deref for Id {
-	type Target = U256;
-
-	fn deref(&self) -> &Self::Target {
-		&self.0
-	}
-}
-
 impl From<String> for Id {
 	fn from(s: String) -> Self {
 		Self(U256::from_be_hex(&s))
+	}
+}
+
+impl From<U256> for Id {
+	fn from(v: U256) -> Self {
+		Self(v)
+	}
+}
+
+impl Display for Id {
+	fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+		Display::fmt(&self.0, f)
 	}
 }

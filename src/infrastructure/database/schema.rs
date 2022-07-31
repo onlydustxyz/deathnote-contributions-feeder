@@ -1,4 +1,12 @@
 table! {
+	applications (id) {
+		id -> Uuid,
+		contribution_id -> Uuid,
+		contributor_id -> Varchar,
+	}
+}
+
+table! {
 	contributions (id) {
 		onchain_id -> Varchar,
 		project_id -> Varchar,
@@ -29,6 +37,7 @@ table! {
 	}
 }
 
+joinable!(applications -> contributions (contribution_id));
 joinable!(contributions -> projects (project_id));
 
-allow_tables_to_appear_in_same_query!(contributions, projects,);
+allow_tables_to_appear_in_same_query!(applications, contributions, projects,);

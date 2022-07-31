@@ -9,7 +9,6 @@ use rocket::{
 	Request, State,
 };
 use rocket_okapi::OpenApiFromRequest;
-use std::ops::Deref;
 
 pub type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
 
@@ -35,10 +34,8 @@ impl<'r> FromRequest<'r> for DbConn {
 	}
 }
 
-impl Deref for DbConn {
-	type Target = PgConnection;
-
-	fn deref(&self) -> &Self::Target {
+impl DbConn {
+	pub fn as_pgconn_ref(&self) -> &PgConnection {
 		&self.0
 	}
 }

@@ -93,6 +93,7 @@ async fn build_project(
 	contributor_cache: &caches::ContributorCache,
 ) -> Option<dto::Project> {
 	let github_repository = repo_cache
+		.inner_ref()
 		.get_or_insert(&project.project.id, || async {
 			match github::API::new().repository_by_id(&project.project.id).await {
 				Ok(repo) => Some(repo),
@@ -169,6 +170,7 @@ async fn build_contributor(
 	contributor_id: ContributorId,
 ) -> Option<Contributor> {
 	contributor_cache
+		.inner_ref()
 		.get_or_insert(&contributor_id, || async {
 			fetch_contributor(&contributor_id).await
 		})
