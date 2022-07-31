@@ -1,4 +1,4 @@
-use std::{env, ops::Deref, time::Duration};
+use std::{env, time::Duration};
 
 use crate::domain::{Contributor, ContributorId};
 
@@ -22,10 +22,8 @@ impl Default for ContributorCache {
 	}
 }
 
-impl Deref for ContributorCache {
-	type Target = Cache<ContributorId, Contributor>;
-
-	fn deref(&self) -> &Self::Target {
+impl ContributorCache {
+	pub fn inner_ref(&self) -> &Cache<ContributorId, Contributor> {
 		&self.0
 	}
 }
