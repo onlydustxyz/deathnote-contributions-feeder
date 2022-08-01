@@ -58,5 +58,8 @@ log = "0.4.17"
 itertools = "0.10.3"
 mapinto = "0.2.1"
 
+# Unit testing
+mockall = "0.11.2"
+
 [dev-dependencies]
 serde_test = "1.0.140"
