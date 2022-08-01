@@ -11,4 +11,4 @@ mod contributor;
 pub use contributor::{Contributor, Id as ContributorId};
 
 mod application;
-pub use application::*;
+pub use application::{Application, Id as ApplicationId};

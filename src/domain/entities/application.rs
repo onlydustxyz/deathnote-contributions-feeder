@@ -1,14 +1,16 @@
 use super::{ContributionId, ContributorId};
 use uuid::Uuid;
 
+pub type Id = Uuid;
+
 pub struct Application {
-	id: Uuid,
+	id: Id,
 	contribution_id: ContributionId,
 	contributor_id: ContributorId,
 }
 
 impl Application {
-	pub fn new(id: Uuid, contribution_id: ContributionId, contributor_id: ContributorId) -> Self {
+	pub fn new(id: Id, contribution_id: ContributionId, contributor_id: ContributorId) -> Self {
 		Self {
 			id,
 			contribution_id,
@@ -16,7 +18,7 @@ impl Application {
 		}
 	}
 
-	pub fn id(&self) -> &Uuid {
+	pub fn id(&self) -> &Id {
 		&self.id
 	}
 
