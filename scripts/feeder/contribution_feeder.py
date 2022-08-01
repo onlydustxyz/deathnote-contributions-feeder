@@ -26,8 +26,8 @@ def get_projects():
 
 def add_contributions(contributions_list):
     for contribution in contributions_list:
-        print(f'Adding contribution {contribution["contribution_id"]}')
-        api_response = api_post("contribution", contribution)
+        print(f'Adding contribution {contribution["github_issue_number"]}')
+        api_response = api_post("contributions/github", contribution)
         if api_response["error"] == True:
             print("Couldn't add contribution", api_response)
 
@@ -44,7 +44,7 @@ def api_post(route, json_data):
     if api_request.status_code in [202]:
         return {'error': False}
     else:
-        return {'error': True, 'status': api_request.status_code}
+        return {'error': True, 'status': api_request.status_code, 'message': api_request.text}
 
 def api_get(route):
     api_request = requests.get(
@@ -109,9 +109,10 @@ if __name__ == "__main__":
         project_id = projects_by_name[project]["id"]
 
         contribution = {
-            "issue_number" : issue_number,
-            "project_id" : project_id,
-            "gate": int(gate)
+            "github_issue_number" : int(issue_number),
+            "project_id" : int(project_id),
+            "gate": int(gate),
+            "validator": "0x071CE7E8c126EA3085fDf2cd01C7d4B7ec12AA9930CE835BfdC8Fb1562e3Baa4"
         }
         contributions.append(contribution)
 
