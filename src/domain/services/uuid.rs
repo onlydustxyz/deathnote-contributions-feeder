@@ -1,5 +1,5 @@
 use uuid::Uuid;
 
-pub trait Repository {
+pub trait Service {
 	fn new_random(&self) -> Uuid;
 }

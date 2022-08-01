@@ -1,6 +1,6 @@
 use deathnote_contributions_feeder::domain::*;
 
-pub fn apply_to_contribution<A: ApplicationRepository, U: UuidRepository>(
+pub fn apply_to_contribution<A: ApplicationRepository, U: UuidService>(
 	application_repository: A,
 	uuid_repository: U,
 	contribution_id: ContributionId,
