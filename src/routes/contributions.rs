@@ -3,7 +3,6 @@ use std::{
 	sync::{Arc, RwLock},
 };
 
-use crypto_bigint::U256;
 use deathnote_contributions_feeder::{
 	domain::{self, Action, ContributionOnChainId},
 	github,
@@ -116,9 +115,7 @@ pub async fn assign_contributor(
 	match queue.write() {
 		Ok(mut queue) => queue.push(Action::AssignContributor {
 			contribution_id,
-			contributor_id: deathnote_contributions_feeder::domain::ContributorId(U256::from_u128(
-				body.contributor_id,
-			)),
+			contributor_id: body.contributor_id.into(),
 		}),
 		Err(error) =>
 			return Err(Json(

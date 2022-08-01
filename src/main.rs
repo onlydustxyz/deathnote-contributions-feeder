@@ -108,6 +108,7 @@ async fn main() {
 				routes::assign_contributor,
 				routes::validate_contribution,
 				routes::unassign_contributor,
+				routes::contributors::find_by_id
 			],
 		)
 		.mount("/swagger", make_swagger_ui(&routes::get_docs()))

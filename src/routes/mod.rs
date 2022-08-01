@@ -16,3 +16,5 @@ pub(crate) fn get_docs() -> SwaggerUIConfig {
 		..Default::default()
 	}
 }
+
+pub mod contributors;
